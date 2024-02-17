@@ -6,9 +6,13 @@ import { randomId } from '../helpers/randomId.js';
 
 // get all abouts
 export const getAllAboutsController = async (req, res) => {
+  console.log("path =====================> ", path)
   try {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
+  console.log("__filename =====================> ", __filename)
+  console.log("__dirname =====================> ", __dirname)
+    
 
     const data = await new Promise((resolve, reject) => {
       fs.readFile(path.resolve(__dirname, "../data/about.txt"), (err, data) => {
