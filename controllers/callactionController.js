@@ -10,7 +10,7 @@ export const getAllCallactionsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/callaction.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "callaction.txt"), function(err, data) {
       if (err) throw err;
 
       let callaction = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getCallactionController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/callaction.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "callaction.txt"), function(err, data) {
       if (err) throw err;
 
       let callaction = JSON.parse(data);
@@ -77,7 +77,7 @@ export const createCallactionController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/callaction.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "callaction.txt"), function(err, data) {
       if (err) throw err;
 
       const callaction = JSON.parse(data);
@@ -101,7 +101,7 @@ export const createCallactionController = async (req, res) => {
 
       callaction.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/callaction.txt"), JSON.stringify(callaction), function(err) {
+      fs.writeFile(path.resolve(__dirname, "callaction.txt"), JSON.stringify(callaction), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -143,13 +143,13 @@ export const updateCallactionController = async (req, res) => {
       link 
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/callaction.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "callaction.txt"), function(err, data) {
       if (err) throw err;
 
       let callaction = JSON.parse(data);
       callaction = callaction.map((item) => item.id === id ? updatedCallaction : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/callaction.txt"), JSON.stringify(callaction), function(err) {
+      fs.writeFile(path.resolve(__dirname, "callaction.txt"), JSON.stringify(callaction), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -178,13 +178,13 @@ export const deleteCallactionController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/callaction.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "callaction.txt"), function(err, data) {
       if (err) throw err;
 
       let callaction = JSON.parse(data);
       callaction = callaction.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/callaction.txt"), JSON.stringify(callaction), function(err) {
+      fs.writeFile(path.resolve(__dirname, "callaction.txt"), JSON.stringify(callaction), function(err) {
         if (err) throw err;
         console.log('Removed the callaction!');  
 
