@@ -10,7 +10,7 @@ export const getAllTestimonialsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/testimonial.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "testimonial.txt"), function(err, data) {
       if (err) throw err;
 
       let testimonial = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getTestimonialController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/testimonial.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "testimonial.txt"), function(err, data) {
       if (err) throw err;
 
       let testimonial = JSON.parse(data);
@@ -79,7 +79,7 @@ export const createTestimonialController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/testimonial.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "testimonial.txt"), function(err, data) {
       if (err) throw err;
 
       const testimonial = JSON.parse(data);
@@ -104,7 +104,7 @@ export const createTestimonialController = async (req, res) => {
 
       testimonial.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/testimonial.txt"), JSON.stringify(testimonial), function(err) {
+      fs.writeFile(path.resolve(__dirname, "testimonial.txt"), JSON.stringify(testimonial), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -148,13 +148,13 @@ export const updateTestimonialController = async (req, res) => {
       patientPhoto,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/testimonial.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "testimonial.txt"), function(err, data) {
       if (err) throw err;
 
       let testimonial = JSON.parse(data);
       testimonial = testimonial.map((item) => item.id === id ? updatedTestimonial : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/testimonial.txt"), JSON.stringify(testimonial), function(err) {
+      fs.writeFile(path.resolve(__dirname, "testimonial.txt"), JSON.stringify(testimonial), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -183,13 +183,13 @@ export const deleteTestimonialController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/testimonial.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "testimonial.txt"), function(err, data) {
       if (err) throw err;
 
       let testimonial = JSON.parse(data);
       testimonial = testimonial.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/testimonial.txt"), JSON.stringify(testimonial), function(err) {
+      fs.writeFile(path.resolve(__dirname, "testimonial.txt"), JSON.stringify(testimonial), function(err) {
         if (err) throw err;
         console.log('Removed the testimonial!');  
 
