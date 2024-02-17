@@ -10,7 +10,7 @@ export const getAllServicesController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/service.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "service.txt"), function(err, data) {
       if (err) throw err;
 
       let service = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getServiceController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/service.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "service.txt"), function(err, data) {
       if (err) throw err;
 
       let service = JSON.parse(data);
@@ -81,7 +81,7 @@ export const createServiceController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/service.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "service.txt"), function(err, data) {
       if (err) throw err;
 
       const service = JSON.parse(data);
@@ -109,7 +109,7 @@ export const createServiceController = async (req, res) => {
 
       service.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/service.txt"), JSON.stringify(service), function(err) {
+      fs.writeFile(path.resolve(__dirname, "service.txt"), JSON.stringify(service), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -159,13 +159,13 @@ export const updateServiceController = async (req, res) => {
       detailsPhoto, 
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/service.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "service.txt"), function(err, data) {
       if (err) throw err;
 
       let service = JSON.parse(data);
       service = service.map((item) => item.id === id ? updatedService : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/service.txt"), JSON.stringify(service), function(err) {
+      fs.writeFile(path.resolve(__dirname, "service.txt"), JSON.stringify(service), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -194,13 +194,13 @@ export const deleteServiceController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/service.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "service.txt"), function(err, data) {
       if (err) throw err;
 
       let service = JSON.parse(data);
       service = service.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/service.txt"), JSON.stringify(service), function(err) {
+      fs.writeFile(path.resolve(__dirname, "service.txt"), JSON.stringify(service), function(err) {
         if (err) throw err;
         console.log('Removed the service!');  
 
