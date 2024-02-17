@@ -50,7 +50,7 @@ export const getAllAboutsController = async (req, res) => {
     //   about,
     // });
     
-    await fs.readFile(path.resolve(__dirname, "about.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "about.txt"), function(err, data) {
       console.log("data ==========> ", data);
       let about = JSON.parse(data);
 
