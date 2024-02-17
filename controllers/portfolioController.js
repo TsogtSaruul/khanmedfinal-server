@@ -10,7 +10,7 @@ export const getAllPortfoliosController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/portfolio.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "portfolio.txt"), function(err, data) {
       if (err) throw err;
 
       let portfolio = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getPortfolioController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/portfolio.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "portfolio.txt"), function(err, data) {
       if (err) throw err;
 
       let portfolio = JSON.parse(data);
@@ -82,7 +82,7 @@ export const createPortfolioController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/portfolio.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "portfolio.txt"), function(err, data) {
       if (err) throw err;
 
       const portfolio = JSON.parse(data);
@@ -111,7 +111,7 @@ export const createPortfolioController = async (req, res) => {
 
       portfolio.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/portfolio.txt"), JSON.stringify(portfolio), function(err) {
+      fs.writeFile(path.resolve(__dirname, "portfolio.txt"), JSON.stringify(portfolio), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -163,13 +163,13 @@ export const updatePortfolioController = async (req, res) => {
       date,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/portfolio.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "portfolio.txt"), function(err, data) {
       if (err) throw err;
 
       let portfolio = JSON.parse(data);
       portfolio = portfolio.map((item) => item.id === id ? updatedPortfolio : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/portfolio.txt"), JSON.stringify(portfolio), function(err) {
+      fs.writeFile(path.resolve(__dirname, "portfolio.txt"), JSON.stringify(portfolio), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -198,13 +198,13 @@ export const deletePortfolioController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/portfolio.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "portfolio.txt"), function(err, data) {
       if (err) throw err;
 
       let portfolio = JSON.parse(data);
       portfolio = portfolio.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/portfolio.txt"), JSON.stringify(portfolio), function(err) {
+      fs.writeFile(path.resolve(__dirname, "portfolio.txt"), JSON.stringify(portfolio), function(err) {
         if (err) throw err;
         console.log('Removed the portfolio!');  
 
