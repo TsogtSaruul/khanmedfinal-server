@@ -10,7 +10,7 @@ export const getAllFaqsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/faq.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "faq.txt"), function(err, data) {
       if (err) throw err;
 
       let faq = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getFaqController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/faq.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "faq.txt"), function(err, data) {
       if (err) throw err;
 
       let faq = JSON.parse(data);
@@ -76,7 +76,7 @@ export const createFaqController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/faq.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "faq.txt"), function(err, data) {
       if (err) throw err;
 
       const faq = JSON.parse(data);
@@ -99,7 +99,7 @@ export const createFaqController = async (req, res) => {
 
       faq.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/faq.txt"), JSON.stringify(faq), function(err) {
+      fs.writeFile(path.resolve(__dirname, "faq.txt"), JSON.stringify(faq), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -139,13 +139,13 @@ export const updateFaqController = async (req, res) => {
       answer,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/faq.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "faq.txt"), function(err, data) {
       if (err) throw err;
 
       let faq = JSON.parse(data);
       faq = faq.map((item) => item.id === id ? updatedFaq : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/faq.txt"), JSON.stringify(faq), function(err) {
+      fs.writeFile(path.resolve(__dirname, "faq.txt"), JSON.stringify(faq), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -174,13 +174,13 @@ export const deleteFaqController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/faq.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "faq.txt"), function(err, data) {
       if (err) throw err;
 
       let faq = JSON.parse(data);
       faq = faq.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/faq.txt"), JSON.stringify(faq), function(err) {
+      fs.writeFile(path.resolve(__dirname, "faq.txt"), JSON.stringify(faq), function(err) {
         if (err) throw err;
         console.log('Removed the faq!');  
 
