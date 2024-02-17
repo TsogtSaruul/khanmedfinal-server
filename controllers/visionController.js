@@ -10,7 +10,7 @@ export const getAllVisionsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/vision.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "vision.txt"), function(err, data) {
       if (err) throw err;
 
       let vision = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getVisionController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/vision.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "vision.txt"), function(err, data) {
       if (err) throw err;
 
       let vision = JSON.parse(data);
@@ -76,7 +76,7 @@ export const createVisionController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/vision.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "vision.txt"), function(err, data) {
       if (err) throw err;
 
       const vision = JSON.parse(data);
@@ -99,7 +99,7 @@ export const createVisionController = async (req, res) => {
 
       vision.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/vision.txt"), JSON.stringify(vision), function(err) {
+      fs.writeFile(path.resolve(__dirname, "vision.txt"), JSON.stringify(vision), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -139,13 +139,13 @@ export const updateVisionController = async (req, res) => {
       text,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/vision.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "vision.txt"), function(err, data) {
       if (err) throw err;
 
       let vision = JSON.parse(data);
       vision = vision.map((item) => item.id === id ? updatedVision : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/vision.txt"), JSON.stringify(vision), function(err) {
+      fs.writeFile(path.resolve(__dirname, "vision.txt"), JSON.stringify(vision), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -174,13 +174,13 @@ export const deleteVisionController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/vision.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "vision.txt"), function(err, data) {
       if (err) throw err;
 
       let vision = JSON.parse(data);
       vision = vision.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/vision.txt"), JSON.stringify(vision), function(err) {
+      fs.writeFile(path.resolve(__dirname, "vision.txt"), JSON.stringify(vision), function(err) {
         if (err) throw err;
         console.log('Removed the vision!');  
 
