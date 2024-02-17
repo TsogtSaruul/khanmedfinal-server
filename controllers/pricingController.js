@@ -10,7 +10,7 @@ export const getAllPricingsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/pricing.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "pricing.txt"), function(err, data) {
       if (err) throw err;
 
       let pricing = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getPricingController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/pricing.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "pricing.txt"), function(err, data) {
       if (err) throw err;
 
       let pricing = JSON.parse(data);
@@ -78,7 +78,7 @@ export const createPricingController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/pricing.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "pricing.txt"), function(err, data) {
       if (err) throw err;
 
       const pricing = JSON.parse(data);
@@ -103,7 +103,7 @@ export const createPricingController = async (req, res) => {
 
       pricing.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/pricing.txt"), JSON.stringify(pricing), function(err) {
+      fs.writeFile(path.resolve(__dirname, "pricing.txt"), JSON.stringify(pricing), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -147,13 +147,13 @@ export const updatePricingController = async (req, res) => {
       list,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/pricing.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "pricing.txt"), function(err, data) {
       if (err) throw err;
 
       let pricing = JSON.parse(data);
       pricing = pricing.map((item) => item.id === id ? updatedPricing : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/pricing.txt"), JSON.stringify(pricing), function(err) {
+      fs.writeFile(path.resolve(__dirname, "pricing.txt"), JSON.stringify(pricing), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -182,13 +182,13 @@ export const deletePricingController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/pricing.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "pricing.txt"), function(err, data) {
       if (err) throw err;
 
       let pricing = JSON.parse(data);
       pricing = pricing.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/pricing.txt"), JSON.stringify(pricing), function(err) {
+      fs.writeFile(path.resolve(__dirname, "pricing.txt"), JSON.stringify(pricing), function(err) {
         if (err) throw err;
         console.log('Removed the pricing!');  
 
