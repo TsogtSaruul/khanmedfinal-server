@@ -90,7 +90,7 @@ export const getAboutController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/about.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "about.txt"), function(err, data) {
       let about = JSON.parse(data);
       about = about.find((item) => item.id === id);
       
@@ -128,7 +128,7 @@ export const createAboutController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/about.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "about.txt"), function(err, data) {
       const about = JSON.parse(data);
       const listId = about.map((item) => item.id)
 
@@ -151,7 +151,7 @@ export const createAboutController = async (req, res) => {
 
       about.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/about.txt"), JSON.stringify(about), function(err) {
+      fs.writeFile(path.resolve(__dirname, "about.txt"), JSON.stringify(about), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -195,11 +195,11 @@ export const updateAboutController = async (req, res) => {
       link,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/about.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "about.txt"), function(err, data) {
       let about = JSON.parse(data);
       about = about.map((item) => item.id === id ? updatedAbout : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/about.txt"), JSON.stringify(about), function(err) {
+      fs.writeFile(path.resolve(__dirname, "about.txt"), JSON.stringify(about), function(err) {
         if (err) throw err;
         console.log('Updated the about!');  
 
@@ -229,11 +229,11 @@ export const deleteAboutController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/about.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "about.txt"), function(err, data) {
       let about = JSON.parse(data);
       about = about.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/about.txt"), JSON.stringify(about), function(err) {
+      fs.writeFile(path.resolve(__dirname, "about.txt"), JSON.stringify(about), function(err) {
         if (err) throw err;
         console.log('Removed the about!');  
 
