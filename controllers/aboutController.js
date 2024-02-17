@@ -10,16 +10,26 @@ export const getAllAboutsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    await fs.readFile(path.resolve(__dirname, "../data/about.txt"), function(err, data) {
-      console.log("data ==========> ", data);
-      let about = JSON.parse(data);
+    const data = await fs.promises.readFile(path.resolve(__dirname, "../data/about.txt"));
+    console.log("data ==========> ", data);
+    let about = JSON.parse(data);
 
-      res.status(200).send({
-        success: true,
-        message: "Бүх about жагсаалт",
-        about,
-      });      
+    res.status(200).send({
+      success: true,
+      message: "Бүх about жагсаалт",
+      about,
     });
+    
+    // await fs.readFile(path.resolve(__dirname, "../data/about.txt"), function(err, data) {
+    //   console.log("data ==========> ", data);
+    //   let about = JSON.parse(data);
+
+    //   res.status(200).send({
+    //     success: true,
+    //     message: "Бүх about жагсаалт",
+    //     about,
+    //   });      
+    // });
 
     // fs.readFile("../data/about.txt", function(err, data) {
     //   console.log("data ==========> ", data);
