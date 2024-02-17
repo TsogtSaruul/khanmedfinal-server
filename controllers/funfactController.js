@@ -10,7 +10,7 @@ export const getAllFunfactsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/funfact.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "funfact.txt"), function(err, data) {
       if (err) throw err;
 
       let funfact = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getFunfactController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/funfact.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "funfact.txt"), function(err, data) {
       if (err) throw err;
 
       let funfact = JSON.parse(data);
@@ -76,7 +76,7 @@ export const createFunfactController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/funfact.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "funfact.txt"), function(err, data) {
       if (err) throw err;
 
       const funfact = JSON.parse(data);
@@ -99,7 +99,7 @@ export const createFunfactController = async (req, res) => {
 
       funfact.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/funfact.txt"), JSON.stringify(funfact), function(err) {
+      fs.writeFile(path.resolve(__dirname, "funfact.txt"), JSON.stringify(funfact), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -139,12 +139,12 @@ export const updateFunfactController = async (req, res) => {
       title,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/funfact.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "funfact.txt"), function(err, data) {
       if (err) throw err;
       let funfact = JSON.parse(data);
       funfact = funfact.map((item) => item.id === id ? updatedFunfact : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/funfact.txt"), JSON.stringify(funfact), function(err) {
+      fs.writeFile(path.resolve(__dirname, "funfact.txt"), JSON.stringify(funfact), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -173,13 +173,13 @@ export const deleteFunfactController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/funfact.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "funfact.txt"), function(err, data) {
       if (err) throw err;
 
       let funfact = JSON.parse(data);
       funfact = funfact.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/funfact.txt"), JSON.stringify(funfact), function(err) {
+      fs.writeFile(path.resolve(__dirname, "funfact.txt"), JSON.stringify(funfact), function(err) {
         if (err) throw err;
 
         res.status(200).send({
