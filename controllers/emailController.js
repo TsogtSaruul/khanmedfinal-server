@@ -10,7 +10,7 @@ export const getAllEmailsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/email.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "email.txt"), function(err, data) {
       if (err) throw err;
 
       let emails = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getEmailController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/email.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "email.txt"), function(err, data) {
       if (err) throw err;
 
       let emails = JSON.parse(data);
@@ -74,7 +74,7 @@ export const createEmailController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/email.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "email.txt"), function(err, data) {
       if (err) throw err;
 
       const emails = JSON.parse(data);
@@ -95,7 +95,7 @@ export const createEmailController = async (req, res) => {
 
       emails.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/email.txt"), JSON.stringify(emails), function(err) {
+      fs.writeFile(path.resolve(__dirname, "email.txt"), JSON.stringify(emails), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -131,13 +131,13 @@ export const updateEmailController = async (req, res) => {
       email 
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/email.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "email.txt"), function(err, data) {
       if (err) throw err;
 
       let emails = JSON.parse(data);
       emails = emails.map((item) => item.id === id ? updatedEmail : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/email.txt"), JSON.stringify(emails), function(err) {
+      fs.writeFile(path.resolve(__dirname, "email.txt"), JSON.stringify(emails), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -166,13 +166,13 @@ export const deleteEmailController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/email.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "email.txt"), function(err, data) {
       if (err) throw err;
 
       let emails = JSON.parse(data);
       emails = emails.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/email.txt"), JSON.stringify(emails), function(err) {
+      fs.writeFile(path.resolve(__dirname, "email.txt"), JSON.stringify(emails), function(err) {
         if (err) throw err;
         console.log('Removed the email!');  
 
