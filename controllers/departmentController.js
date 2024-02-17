@@ -10,7 +10,7 @@ export const getAllDepartmentsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/department.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "department.txt"), function(err, data) {
       if (err) throw err;
 
       let department = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getDepartmentController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/department.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "department.txt"), function(err, data) {
       if (err) throw err;
 
       let department = JSON.parse(data);
@@ -80,7 +80,7 @@ export const createDepartmentController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/department.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "department.txt"), function(err, data) {
       if (err) throw err;
 
       const department = JSON.parse(data);
@@ -107,7 +107,7 @@ export const createDepartmentController = async (req, res) => {
 
       department.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/department.txt"), JSON.stringify(department), function(err) {
+      fs.writeFile(path.resolve(__dirname, "department.txt"), JSON.stringify(department), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -155,13 +155,13 @@ export const updateDepartmentController = async (req, res) => {
       photo,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/department.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "department.txt"), function(err, data) {
       if (err) throw err;
 
       let department = JSON.parse(data);
       department = department.map((item) => item.id === id ? updatedDepartment : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/department.txt"), JSON.stringify(department), function(err) {
+      fs.writeFile(path.resolve(__dirname, "department.txt"), JSON.stringify(department), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -190,13 +190,13 @@ export const deleteDepartmentController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/department.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "department.txt"), function(err, data) {
       if (err) throw err;
 
       let department = JSON.parse(data);
       department = department.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/department.txt"), JSON.stringify(department), function(err) {
+      fs.writeFile(path.resolve(__dirname, "department.txt"), JSON.stringify(department), function(err) {
         if (err) throw err;
         console.log('Removed the department!');  
 
