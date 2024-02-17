@@ -26,13 +26,6 @@ import visionRoutes from "./routes/visionRoutes.js";
 import socialRoutes from "./routes/socialRoutes.js";
 import emailRoutes from "./routes/emailRoutes.js";
 
-
-// configure env
-dotenv.config();
-
-// databse config
-connectDB();
-
 // rest object
 const app = express();
 
@@ -80,6 +73,13 @@ app.use("/email", emailRoutes);
 app.get("/", (req, res) => {
   res.send("<h1>THE SERVER IS RUNNING!</h1>");
 });
+
+
+// configure env
+dotenv.config();
+
+// databse config
+connectDB();
 
 // PORT
 const PORT = 5000;
