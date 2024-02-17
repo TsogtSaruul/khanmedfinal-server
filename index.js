@@ -36,13 +36,21 @@ connectDB();
 // rest object
 const app = express();
 
-middelwares
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+// middelwares
 app.use(cors({
   origin: ["https://khanmed-final-client.vercel.app"],
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
   credentials: true
 }));
 // app.use(cors({}));
+
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(morgan("dev"));
