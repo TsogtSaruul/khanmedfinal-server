@@ -10,7 +10,7 @@ export const getAllSocialsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/social.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "social.txt"), function(err, data) {
       if (err) throw err;
 
       let social = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getSocialController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/social.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "social.txt"), function(err, data) {
       if (err) throw err;
 
       let social = JSON.parse(data);
@@ -76,7 +76,7 @@ export const createSocialController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/social.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "social.txt"), function(err, data) {
       if (err) throw err;
 
       const social = JSON.parse(data);
@@ -99,7 +99,7 @@ export const createSocialController = async (req, res) => {
 
       social.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/social.txt"), JSON.stringify(social), function(err) {
+      fs.writeFile(path.resolve(__dirname, "social.txt"), JSON.stringify(social), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -139,13 +139,13 @@ export const updateSocialController = async (req, res) => {
       title,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/social.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "social.txt"), function(err, data) {
       if (err) throw err;
 
       let social = JSON.parse(data);
       social = social.map((item) => item.id === id ? updatedSocial : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/social.txt"), JSON.stringify(social), function(err) {
+      fs.writeFile(path.resolve(__dirname, "social.txt"), JSON.stringify(social), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -174,13 +174,13 @@ export const deleteSocialController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/social.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "social.txt"), function(err, data) {
       if (err) throw err;
 
       let social = JSON.parse(data);
       social = social.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/social.txt"), JSON.stringify(social), function(err) {
+      fs.writeFile(path.resolve(__dirname, "social.txt"), JSON.stringify(social), function(err) {
         if (err) throw err;
         console.log('Removed the social!');  
 
