@@ -45,9 +45,7 @@ app.use((req, res, next) => {
 
 // middelwares
 app.use(cors({
-  origin: ["https://khanmed-final-client.vercel.app"],
-  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-  credentials: true
+  origin: "*"
 }));
 // app.use(cors({}));
 
