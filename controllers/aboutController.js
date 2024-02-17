@@ -8,37 +8,37 @@ import { randomId } from '../helpers/randomId.js';
 export const getAllAboutsController = async (req, res) => {
   console.log("path =====================> ", path)
   try {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-  console.log("__filename =====================> ", __filename)
-  console.log("__dirname =====================> ", __dirname)
-    
-
-    const data = await new Promise((resolve, reject) => {
-      fs.readFile(path.resolve(__dirname, "about.txt"), (err, data) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      });
-    });
-
-    console.log("data ==========> ", data);
-    let about = JSON.parse(data);
-
-    res.status(200).send({
-      success: true,
-      message: "Бүх about жагсаалт",
-      about,
-    });
-
-    
-
-
-    
     // const __filename = fileURLToPath(import.meta.url);
     // const __dirname = path.dirname(__filename);
+    // console.log("__filename =====================> ", __filename)
+    // console.log("__dirname =====================> ", __dirname)
+    
+
+    // const data = await new Promise((resolve, reject) => {
+    //   fs.readFile(path.resolve(__dirname, "about.txt"), (err, data) => {
+    //     if (err) {
+    //       reject(err);
+    //     } else {
+    //       resolve(data);
+    //     }
+    //   });
+    // });
+
+    // console.log("data ==========> ", data);
+    // let about = JSON.parse(data);
+
+    // res.status(200).send({
+    //   success: true,
+    //   message: "Бүх about жагсаалт",
+    //   about,
+    // });
+
+    
+
+
+    
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
 
     // const data = await fs.promises.readFile(path.resolve(__dirname, "../data/about.txt"));
     // console.log("data ==========> ", data);
@@ -50,16 +50,16 @@ export const getAllAboutsController = async (req, res) => {
     //   about,
     // });
     
-    // await fs.readFile(path.resolve(__dirname, "../data/about.txt"), function(err, data) {
-    //   console.log("data ==========> ", data);
-    //   let about = JSON.parse(data);
+    await fs.readFile(path.resolve(__dirname, "about.txt"), function(err, data) {
+      console.log("data ==========> ", data);
+      let about = JSON.parse(data);
 
-    //   res.status(200).send({
-    //     success: true,
-    //     message: "Бүх about жагсаалт",
-    //     about,
-    //   });      
-    // });
+      res.status(200).send({
+        success: true,
+        message: "Бүх about жагсаалт",
+        about,
+      });      
+    });
 
     // fs.readFile("../data/about.txt", function(err, data) {
     //   console.log("data ==========> ", data);
