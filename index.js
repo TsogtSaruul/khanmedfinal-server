@@ -44,9 +44,9 @@ app.use((req, res, next) => {
 });
 
 // middelwares
-app.use(cors({
-  origin: "*"
-}));
+// app.use(cors({
+//   origin: "*"
+// }));
 // app.use(cors({}));
 
 app.use(bodyParser.json({ limit: "30mb" }));
