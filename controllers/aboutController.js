@@ -20,7 +20,7 @@ export const getAllAboutsController = async (req, res) => {
     //   });      
     // });
 
-    fs.readFile("../data/about.txt", function(err, data) {
+    fs.readFile("https://github.com/TsogtSaruul/khanmedfinal-server/blob/main/data/about.txt", function(err, data) {
       let about = JSON.parse(data);
 
       res.status(200).send({
