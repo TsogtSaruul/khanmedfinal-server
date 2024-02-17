@@ -10,7 +10,7 @@ export const getAllClientsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/client.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "client.txt"), function(err, data) {
       let client = JSON.parse(data);
 
       res.status(200).send({
@@ -38,7 +38,7 @@ export const getClientController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/client.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "client.txt"), function(err, data) {
       let client = JSON.parse(data);
       client = client.find((item) => item.id === id);
       
@@ -75,7 +75,7 @@ export const createClientController = async (req, res) => {
       return res.status(401).send({ message: "Хэлтэсийн нэрийг оруулна уу!" });
     }
 
-    fs.readFile(path.resolve(__dirname, "../data/client.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "client.txt"), function(err, data) {
       const client = JSON.parse(data);
       const listId = client.map((item) => item.id)
 
@@ -95,7 +95,7 @@ export const createClientController = async (req, res) => {
 
       client.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/client.txt"), JSON.stringify(client), function(err) {
+      fs.writeFile(path.resolve(__dirname, "client.txt"), JSON.stringify(client), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -128,11 +128,11 @@ export const updateClientController = async (req, res) => {
     const { id } = req.params;
     const updatedClient = { id, title, photo };
 
-    fs.readFile(path.resolve(__dirname, "../data/client.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "client.txt"), function(err, data) {
       let client = JSON.parse(data);
       client = client.map((item) => item.id === id ? updatedClient : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/client.txt"), JSON.stringify(client), function(err) {
+      fs.writeFile(path.resolve(__dirname, "client.txt"), JSON.stringify(client), function(err) {
         if (err) throw err;
         console.log('Updated the client!');  
 
@@ -162,11 +162,11 @@ export const deleteClientController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/client.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "client.txt"), function(err, data) {
       let client = JSON.parse(data);
       client = client.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/client.txt"), JSON.stringify(client), function(err) {
+      fs.writeFile(path.resolve(__dirname, "client.txt"), JSON.stringify(client), function(err) {
         if (err) throw err;
         console.log('Removed the client!');  
 
