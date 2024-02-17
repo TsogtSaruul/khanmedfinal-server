@@ -15,7 +15,7 @@ export const getAllAboutsController = async (req, res) => {
     
 
     const data = await new Promise((resolve, reject) => {
-      fs.readFile(path.resolve(__dirname, "../data/about.txt"), (err, data) => {
+      fs.readFile(path.resolve(__dirname, "about.txt"), (err, data) => {
         if (err) {
           reject(err);
         } else {
