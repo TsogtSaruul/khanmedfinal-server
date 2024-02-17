@@ -11,7 +11,7 @@ export const getAllDoctorsController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/doctor.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "doctor.txt"), function(err, data) {
       if (err) throw err;
       let doctor = JSON.parse(data);
 
@@ -40,7 +40,7 @@ export const getDoctorController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/doctor.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "doctor.txt"), function(err, data) {
       if (err) throw err;
 
       let doctor = JSON.parse(data);
@@ -97,7 +97,7 @@ export const createDoctorController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/doctor.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "doctor.txt"), function(err, data) {
       if (err) throw err;
 
       const doctor = JSON.parse(data);
@@ -142,7 +142,7 @@ export const createDoctorController = async (req, res) => {
 
       doctor.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/doctor.txt"), JSON.stringify(doctor), function(err) {
+      fs.writeFile(path.resolve(__dirname, "doctor.txt"), JSON.stringify(doctor), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -218,7 +218,7 @@ export const updateDoctorController = async (req, res) => {
       timeDuration,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/doctor.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "doctor.txt"), function(err, data) {
       if (err) throw err;
 
       let doctor = JSON.parse(data);
@@ -234,7 +234,7 @@ export const updateDoctorController = async (req, res) => {
       
       doctor = doctor.map((item) => item.id === id ? updatedDoctor : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/doctor.txt"), JSON.stringify(doctor), function(err) {
+      fs.writeFile(path.resolve(__dirname, "doctor.txt"), JSON.stringify(doctor), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -263,13 +263,13 @@ export const deleteDoctorController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/doctor.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "doctor.txt"), function(err, data) {
       if (err) throw err;
 
       let doctor = JSON.parse(data);
       doctor = doctor.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/doctor.txt"), JSON.stringify(doctor), function(err) {
+      fs.writeFile(path.resolve(__dirname, "doctor.txt"), JSON.stringify(doctor), function(err) {
         if (err) throw err;
         console.log('Removed the doctor!');  
 
