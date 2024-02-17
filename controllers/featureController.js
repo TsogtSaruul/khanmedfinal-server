@@ -10,7 +10,7 @@ export const getAllFeaturesController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/feature.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "feature.txt"), function(err, data) {
       if (err) throw err;
 
       let feature = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getFeatureController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/feature.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "feature.txt"), function(err, data) {
       if (err) throw err;
 
       let feature = JSON.parse(data);
@@ -76,7 +76,7 @@ export const createFeatureController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/feature.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "feature.txt"), function(err, data) {
       if (err) throw err;
 
       const feature = JSON.parse(data);
@@ -99,7 +99,7 @@ export const createFeatureController = async (req, res) => {
 
       feature.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/feature.txt"), JSON.stringify(feature), function(err) {
+      fs.writeFile(path.resolve(__dirname, "feature.txt"), JSON.stringify(feature), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -139,13 +139,13 @@ export const updateFeatureController = async (req, res) => {
       text,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/feature.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "feature.txt"), function(err, data) {
       if (err) throw err;
 
       let feature = JSON.parse(data);
       feature = feature.map((item) => item.id === id ? updatedFeature : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/feature.txt"), JSON.stringify(feature), function(err) {
+      fs.writeFile(path.resolve(__dirname, "feature.txt"), JSON.stringify(feature), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -174,13 +174,13 @@ export const deleteFeatureController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/feature.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "feature.txt"), function(err, data) {
       if (err) throw err;
 
       let feature = JSON.parse(data);
       feature = feature.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/feature.txt"), JSON.stringify(feature), function(err) {
+      fs.writeFile(path.resolve(__dirname, "feature.txt"), JSON.stringify(feature), function(err) {
         if (err) throw err;
         console.log('Removed the feature!');  
 
