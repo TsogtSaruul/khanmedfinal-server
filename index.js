@@ -40,7 +40,7 @@ middelwares
 app.use(cors({
   origin: ["https://khanmed-final-client.vercel.app"],
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-  // credentials: true
+  credentials: true
 }));
 // app.use(cors({}));
 app.use(bodyParser.json({ limit: "30mb" }));
