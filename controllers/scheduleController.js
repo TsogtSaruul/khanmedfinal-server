@@ -10,7 +10,7 @@ export const getAllSchedulesController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/schedule.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "schedule.txt"), function(err, data) {
       if (err) throw err;
 
       let schedule = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getScheduleController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/schedule.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "schedule.txt"), function(err, data) {
       if (err) throw err;
 
       let schedule = JSON.parse(data);
@@ -79,7 +79,7 @@ export const createScheduleController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/schedule.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "schedule.txt"), function(err, data) {
       if (err) throw err;
 
       const schedule = JSON.parse(data);
@@ -105,7 +105,7 @@ export const createScheduleController = async (req, res) => {
 
       schedule.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/schedule.txt"), JSON.stringify(schedule), function(err) {
+      fs.writeFile(path.resolve(__dirname, "schedule.txt"), JSON.stringify(schedule), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -151,13 +151,13 @@ export const updateScheduleController = async (req, res) => {
       link,
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/schedule.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "schedule.txt"), function(err, data) {
       if (err) throw err;
 
       let schedule = JSON.parse(data);
       schedule = schedule.map((item) => item.id === id ? updatedSchedule : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/schedule.txt"), JSON.stringify(schedule), function(err) {
+      fs.writeFile(path.resolve(__dirname, "schedule.txt"), JSON.stringify(schedule), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -186,13 +186,13 @@ export const deleteScheduleController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/schedule.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "schedule.txt"), function(err, data) {
       if (err) throw err;
 
       let schedule = JSON.parse(data);
       schedule = schedule.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/schedule.txt"), JSON.stringify(schedule), function(err) {
+      fs.writeFile(path.resolve(__dirname, "schedule.txt"), JSON.stringify(schedule), function(err) {
         if (err) throw err;
         console.log('Removed the schedule!');  
 
