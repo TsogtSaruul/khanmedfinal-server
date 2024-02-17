@@ -10,7 +10,7 @@ export const getAllSlidersController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/slider.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "slider.txt"), function(err, data) {
       if (err) throw err;
 
       let slider = JSON.parse(data);
@@ -40,7 +40,7 @@ export const getSliderController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/slider.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "slider.txt"), function(err, data) {
       if (err) throw err;
 
       let slider = JSON.parse(data);
@@ -79,7 +79,7 @@ export const createSliderController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/slider.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "slider.txt"), function(err, data) {
       if (err) throw err;
 
       const slider = JSON.parse(data);
@@ -105,7 +105,7 @@ export const createSliderController = async (req, res) => {
 
       slider.push(newItem);
 
-      fs.writeFile(path.resolve(__dirname, "../data/slider.txt"), JSON.stringify(slider), function(err) {
+      fs.writeFile(path.resolve(__dirname, "slider.txt"), JSON.stringify(slider), function(err) {
         if (err) throw err;
 
         res.status(201).send({
@@ -151,13 +151,13 @@ export const updateSliderController = async (req, res) => {
       text, 
     };
 
-    fs.readFile(path.resolve(__dirname, "../data/slider.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "slider.txt"), function(err, data) {
       if (err) throw err;
 
       let slider = JSON.parse(data);
       slider = slider.map((item) => item.id === id ? updatedSlider : item );
 
-      fs.writeFile(path.resolve(__dirname, "../data/slider.txt"), JSON.stringify(slider), function(err) {
+      fs.writeFile(path.resolve(__dirname, "slider.txt"), JSON.stringify(slider), function(err) {
         if (err) throw err;
 
         res.status(200).send({
@@ -186,13 +186,13 @@ export const deleteSliderController = async (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    fs.readFile(path.resolve(__dirname, "../data/slider.txt"), function(err, data) {
+    fs.readFile(path.resolve(__dirname, "slider.txt"), function(err, data) {
       if (err) throw err;
 
       let slider = JSON.parse(data);
       slider = slider.filter((item) => item.id !== id);
 
-      fs.writeFile(path.resolve(__dirname, "../data/slider.txt"), JSON.stringify(slider), function(err) {
+      fs.writeFile(path.resolve(__dirname, "slider.txt"), JSON.stringify(slider), function(err) {
         if (err) throw err;
         console.log('Removed the slider!');  
 
